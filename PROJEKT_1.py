@@ -63,12 +63,26 @@ print("Enter a number btw. 1 and ", str(len(TEXTS)))
 selected_number = input("to select: ")
 
 #text index check
-if not int(selected_number) in range(1,len(TEXTS)): 
+if not int(selected_number) in range(1,len(TEXTS)+1): 
     print("selected number does not in range, terminating the program")
 elif selected_number.isnumeric() != True:
     print("selected number is not numerical, terminating the program")
 else: 
     print(separator)
+
+# cleaning words
+words_cleaned = list()
+text_split = TEXTS[int(selected_number)].split()
+for slovo in text_split:
+    slovo = slovo.strip(".!?_:;")
+    words_cleaned.append(slovo.lower())
+print(words_cleaned)
+
+#statistics - count words in text
+#count_words = len(texts_split)
+
+
+
 
 
 
