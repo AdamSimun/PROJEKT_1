@@ -6,30 +6,43 @@ email: adam.simunek@seznam.cz
 discord: -
 """
 
-#entrence variables
+#help
+separator = "-"*54
 
+#entrance variables - texts to be analyzed
+texts = dict
+
+
+#entrance variables - login
 log_in = dict()
 log_in["bob"] = "123"
 log_in["ann"] = "pass123"
 log_in["mike"] = "password123"
 log_in["liz"] = "pass123"
 
+texts
+
 #log-in processa
-user_log = input("Write your user's name: ")
+user_log = input("username: ")
+password_log = input("password: ")
+print(separator)
 
-if not user_log in log_in.keys():
-    print("We are sorry, but your username is not in our database. Application quits.")
-    quit()
+if user_log in log_in.keys() and log_in[user_log] == password_log:
+    print("Welcome to the app,", user_log, "\n We have 3 text to be analyzed")
+    print(separator)    
 else:
-    print("Your username has been found successfully in our database:")
-
-password_log = input("Write your password: ")
-
-if log_in[user_log] == password_log:
-    print("Your password is correct.")
-else:
-    print("We are sorry, but your password is wrong. Application quits.")
+    print("unregistred user, terminating the program")
     quit()
+
+print()
+    
+
+
+#if log_in[user_log] == password_log:
+    #print("Your password is correct.")
+#else:
+    #print("Sorry", user_log, "but your password is wrong. Application quits.")
+    #quit()
     
 print("Welcome to our text-analyse application.")
 
