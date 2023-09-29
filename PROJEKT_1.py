@@ -72,14 +72,46 @@ else:
 
 # cleaning words
 words_cleaned = list()
-text_split = TEXTS[int(selected_number)].split()
-for slovo in text_split:
-    slovo = slovo.strip(".!?_:;")
-    words_cleaned.append(slovo.lower())
-print(words_cleaned)
+text_split = TEXTS[int(selected_number)-1].split()
+for word in text_split:
+    word = word.strip(".!?_:;")
+    words_cleaned.append(word)
 
 #statistics - count words in text
-#count_words = len(texts_split)
+print("There are ", len(words_cleaned), "words in selected text")
+
+words_titlecase = list()
+words_uppercase = list()
+words_lowercase = list()
+numeric = list()
+
+for word2 in words_cleaned:
+
+    if word2.istitle():
+        words_titlecase.append(word2)
+    elif word2.isupper():
+        words_uppercase.append(word2)
+    elif word2.islower():
+        words_lowercase.append(word2)
+    elif word2.isnumeric:
+        numeric.append(float(word2))
+    else:
+        continue
+     
+print("There are ", len(words_titlecase), "titlecase words")
+print("There are ", len(words_uppercase), "uppercase words")
+print("There are ", len(words_lowercase), "lowercase words")
+print("There are ", len(numeric), "numeric strings")
+print("The sum of all the numbers", sum(numeric))
+print(separator)
+
+#plot
+
+
+
+
+
+
 
 
 
