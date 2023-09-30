@@ -105,7 +105,31 @@ print("There are ", len(numeric), "numeric strings")
 print("The sum of all the numbers", sum(numeric))
 print(separator)
 
-#plot
+#plot - max length word
+words_length = list()
+for word3 in words_cleaned:
+    words_length.append(len(word3))
+
+word_max_length = max(words_length)
+plot_len_range = list(range(1,(word_max_length+1)))
+
+dict_len_words = dict()
+for rank in plot_len_range:
+    dict_len_words[rank] = 0
+
+#plot - count words by their length
+for word4 in words_cleaned:
+    dict_len_words[len(word4)] = dict_len_words[len(word4)] + 1
+
+print(dict_len_words)
+
+
+
+
+
+
+
+
 
 
 
