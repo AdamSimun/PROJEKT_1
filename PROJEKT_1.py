@@ -74,7 +74,7 @@ else:
 words_cleaned = list()
 text_split = TEXTS[int(selected_number)-1].split()
 for word in text_split:
-    word = word.strip(".!?_:;")
+    word = word.strip(".!?_:;,")
     words_cleaned.append(word)
 
 #statistics - count words in text
@@ -121,7 +121,17 @@ for rank in plot_len_range:
 for word4 in words_cleaned:
     dict_len_words[len(word4)] = dict_len_words[len(word4)] + 1
 
+
+#plot - graphic
+plot_labels = ("LEN", "OCCURENCES", "NR.")
+
+print(len(words_cleaned[6]))
+
+print(f"{' | '.join(plot_labels)}", separator, sep="\n")
+for key in dict_len_words:
+    print(f"/{key}/{int(dict_len_words[key])*'*'}/{dict_len_words[key]}")
 print(dict_len_words)
+print(words_cleaned)
 
 
 
