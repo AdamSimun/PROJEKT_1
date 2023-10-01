@@ -5,9 +5,9 @@ author: Adam Šimůnek
 email: adam.simunek@seznam.cz
 discord: adamsim2
 """
-
 #help
 separator = "-"*54
+title = "PROJEKT_1.py: první projekt do Engeto Online Python Akademie"
 
 #entrance variables - texts to be analyzed
 TEXTS = ['''
@@ -38,6 +38,7 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
+print(title)
 
 #entrance variables - login data
 log_in = dict()
@@ -54,7 +55,7 @@ print(separator)
 if user_log in log_in.keys() and log_in[user_log] == password_log:
     print(f"Welcome to the app, {user_log}", f"We have {len(TEXTS)} text to be analyzed.", separator, sep="\n")   
 else:
-    print("unregistred user, terminating the program")
+    print("Unregistred user! Terminating the program.")
     quit()
 
 #select text
@@ -62,11 +63,11 @@ print(f"Enter a number btw. 1 and {len(TEXTS)}")
 selected_number = input("to select: ")
 
 #selected text-index check
-if selected_number.isnumeric() != True:
-    print("selected number is not numerical, terminating the program")
+if not selected_number.isnumeric():
+    print("Selected 'number' is not numerical! Terminating the program.")
     quit()
 elif not int(selected_number) in range(1,len(TEXTS)+1): 
-    print("selected number does not in range, terminating the program")
+    print("Selected number does not in range! Terminating the program.")
     quit()
 else: 
     print(separator)
@@ -97,10 +98,10 @@ for word2 in words_cleaned:
         continue
 
 print(f"There are {len(words_cleaned)} words in the selected text.")     
-print(f"There are {len(words_titlecase)} titlecase words")
-print(f"There are {len(words_uppercase)} uppercase words")
-print(f"There are {len(words_lowercase)} lowercase words")
-print(f"There are {len(numeric)} numeric strings")
+print(f"There are {len(words_titlecase)} titlecase words.")
+print(f"There are {len(words_uppercase)} uppercase words.")
+print(f"There are {len(words_lowercase)} lowercase words.")
+print(f"There are {len(numeric)} numeric strings.")
 print(f"The sum of all the numbers: {sum(numeric)}")
 print(separator)
 
@@ -124,9 +125,9 @@ for word4 in words_cleaned:
 plot_labels = ("LEN", "OCCURENCES", "NR.")
 occurences_len = max(dict_len_words.values())
 
-print(f"{plot_labels[0].center(4)}|{plot_labels[1].center(occurences_len+5)}|{plot_labels[2].ljust(10)}", separator, sep="\n")
+print(f"{plot_labels[0].center(4)}|{plot_labels[1].center(occurences_len+3)}|{plot_labels[2].ljust(10)}", separator, sep="\n")
 for key in dict_len_words:
-    print(f"{str(key).center(4)}|{str((dict_len_words[key])*'*').ljust(occurences_len+5)}|{str(dict_len_words[key]).ljust(10)}")
+    print(f"{str(key).center(4)}|{str((dict_len_words[key])*'*').ljust(occurences_len+3)}|{str(dict_len_words[key]).ljust(10)}")
 
 
 
