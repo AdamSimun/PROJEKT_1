@@ -3,7 +3,7 @@ PROJEKT_1.py: první projekt do Engeto Online Python Akademie
 
 author: Adam Šimůnek
 email: adam.simunek@seznam.cz
-discord: -
+discord: adamsim2
 """
 
 #help
@@ -39,38 +39,39 @@ garpike and stingray are also present.'''
 ]
 
 
-#entrance variables - login
+#entrance variables - login data
 log_in = dict()
 log_in["bob"] = "123"
 log_in["ann"] = "pass123"
 log_in["mike"] = "password123"
 log_in["liz"] = "pass123"
 
-#log-in processa
+#login check
 user_log = input("username: ")
 password_log = input("password: ")
 print(separator)
 
 if user_log in log_in.keys() and log_in[user_log] == password_log:
-    print("Welcome to the app,", user_log, "\nWe have",len(TEXTS), "text to be analyzed")
-    print(separator)    
+    print(f"Welcome to the app, {user_log}", f"We have {len(TEXTS)} text to be analyzed.", separator, sep="\n")   
 else:
     print("unregistred user, terminating the program")
     quit()
 
 #select text
-print("Enter a number btw. 1 and ", str(len(TEXTS)))
+print(f"Enter a number btw. 1 and {len(TEXTS)}")
 selected_number = input("to select: ")
 
-#text index check
-if not int(selected_number) in range(1,len(TEXTS)+1): 
-    print("selected number does not in range, terminating the program")
-elif selected_number.isnumeric() != True:
+#selected text-index check
+if selected_number.isnumeric() != True:
     print("selected number is not numerical, terminating the program")
+    quit()
+elif not int(selected_number) in range(1,len(TEXTS)+1): 
+    print("selected number does not in range, terminating the program")
+    quit()
 else: 
     print(separator)
 
-# cleaning words
+# words cleaning
 words_cleaned = list()
 text_split = TEXTS[int(selected_number)-1].split()
 for word in text_split:
@@ -78,15 +79,12 @@ for word in text_split:
     words_cleaned.append(word)
 
 #statistics - count words in text
-print("There are ", len(words_cleaned), "words in selected text")
-
 words_titlecase = list()
 words_uppercase = list()
 words_lowercase = list()
 numeric = list()
 
 for word2 in words_cleaned:
-
     if word2.istitle():
         words_titlecase.append(word2)
     elif word2.isupper():
@@ -97,12 +95,13 @@ for word2 in words_cleaned:
         numeric.append(float(word2))
     else:
         continue
-     
-print("There are ", len(words_titlecase), "titlecase words")
-print("There are ", len(words_uppercase), "uppercase words")
-print("There are ", len(words_lowercase), "lowercase words")
-print("There are ", len(numeric), "numeric strings")
-print("The sum of all the numbers", sum(numeric))
+
+print(f"There are {len(words_cleaned)} words in the selected text.")     
+print(f"There are {len(words_titlecase)} titlecase words")
+print(f"There are {len(words_uppercase)} uppercase words")
+print(f"There are {len(words_lowercase)} lowercase words")
+print(f"There are {len(numeric)} numeric strings")
+print(f"The sum of all the numbers: {sum(numeric)}")
 print(separator)
 
 #plot - max length word
@@ -121,17 +120,15 @@ for rank in plot_len_range:
 for word4 in words_cleaned:
     dict_len_words[len(word4)] = dict_len_words[len(word4)] + 1
 
-
 #plot - graphic
 plot_labels = ("LEN", "OCCURENCES", "NR.")
+occurences_len = max(dict_len_words.values())
 
-print(len(words_cleaned[6]))
-
-print(f"{' | '.join(plot_labels)}", separator, sep="\n")
+print(f"{plot_labels[0].center(4)}|{plot_labels[1].center(occurences_len+5)}|{plot_labels[2].ljust(10)}", separator, sep="\n")
 for key in dict_len_words:
-    print(f"/{key}/{int(dict_len_words[key])*'*'}/{dict_len_words[key]}")
-print(dict_len_words)
-print(words_cleaned)
+    print(f"{str(key).center(4)}|{str((dict_len_words[key])*'*').ljust(occurences_len+5)}|{str(dict_len_words[key]).ljust(10)}")
+
+
 
 
 
